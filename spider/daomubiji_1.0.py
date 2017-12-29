@@ -5,8 +5,7 @@
 '''
 功能：从网页抓取数据
 安装：pip install beautifulsoup4
-	  pip install lxml   第三方html解析器lxml,妈的安装失败，再一次感受到win系统开发的垃圾之处
-	  pip install html5lib  第三方html解析器lxml安不上，只能安这个了
+	  pip install lxml   第三方html解析器lxml
 '''
 __author__ ="April"	 
 
@@ -14,7 +13,8 @@ from urllib import request
 from urllib.error import URLError, HTTPError
 from bs4 import  BeautifulSoup
 import lxml
-from config import *
+# from config import *
+import config
 
 #盗墓笔记下载爬虫类
 class DMBJ(object):
@@ -91,7 +91,8 @@ class DMBJ(object):
         :param content:要写入文件的内容
         '''
 		with open("result.txt", 'a', encoding="utf-8") as f:
-			f.write(json.dumps(content, ensure_ascii=False) + "\n")
+			print(3)
+			# f.write(json.dumps(content, ensure_ascii=False) + "\n")
 
 
 	def saveFile(self,data):
@@ -106,8 +107,8 @@ class DMBJ(object):
 		save_path = 'C:\\Users\Alex\Desktop\python\\'+fileName+'.txt'
 
 		with open(save_path, "ab") as outfile: # ab  : 二进制格式打开一个文件用于追加
-			content = content +"\n"
 			outfile.write(bytes(content, 'UTF-8'))
+			outfile.write(bytes("\n", 'UTF-8'))
 
 baseURL = 'http://www.nanpaisanshu.org/daomubiji/'
 dmbj = DMBJ(baseURL)
